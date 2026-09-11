@@ -1,10 +1,9 @@
+
 <script setup>
 </script>
 
 <template>
-   <router-view />
-
-
+ <p>Complete</p>
 </template>
 
 <style scoped>

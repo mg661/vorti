@@ -1,10 +1,9 @@
+
 <script setup>
 </script>
 
 <template>
-   <router-view />
-
-
+ <p>Cards</p>
 </template>
 
 <style scoped>

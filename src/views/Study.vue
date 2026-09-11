@@ -1,10 +1,9 @@
+
 <script setup>
 </script>
 
 <template>
-   <router-view />
-
-
+ <p>Study</p>
 </template>
 
 <style scoped>

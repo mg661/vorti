@@ -2,9 +2,7 @@
 </script>
 
 <template>
-   <router-view />
-
-
+ <p>WordsBank</p>
 </template>
 
 <style scoped>
