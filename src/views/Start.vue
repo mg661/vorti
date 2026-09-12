@@ -1,29 +1,33 @@
-
 <script setup>
 import Topbar from '@/components/Topbar.vue'
-import heroImage from '@/assets/cat.png'
+import heroImage from '@/assets/cat2.png'
 </script>
 
 <template>
-    <div>
+    <div class="flex flex-col min-h-screen">
         <header>
             <Topbar/>
         </header>
 
-        <main>
-            <div>
-                <img :src="heroImage" alt="Hero">
-            </div>
-            <h1>
-                Place for welcome message
-            </h1>
+        <main class="flex-1 flex flex-col items-center text-center px-4">
 
-            <div id="btn-container">
-                <button>
-                    button1
+            <div class="flex-1 flex flex-col items-center justify-center gap-6">
+                <img :src="heroImage" alt="Hero" class="w-full">
+
+                <div class="font-heading font-bold text-3xl">
+                    Learn a little
+                    <br>
+                    every day
+                </div> 
+            </div>
+
+            <div class="flex flex-col gap-3 w-full pb-6">
+                <p class="text-text-muted">Pick up where you left off or explore your full word bank.</p>
+                <button type="button" class="bg-blue font-bold py-3 rounded-card">
+                    Choose a Set
                 </button>
-                <button>
-                    button2
+                <button type="button" class="bg-transparent font-bold py-3 border rounded-card border-border">
+                    View Vocabulary Bank
                 </button>
             </div>
         </main>
@@ -31,6 +35,3 @@ import heroImage from '@/assets/cat.png'
     </div>
 
 </template>
-
-<style scoped>
-</style>
