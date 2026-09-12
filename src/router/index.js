@@ -8,6 +8,7 @@ import Complete from '@/views/Complete.vue'
 import WordsBank from '@/views/WordsBank.vue'
 import Profile from '@/views/Profile.vue'
 
+
 const routes = [
     {
         path: '/',
@@ -47,7 +48,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/vorti'),
     routes
 })
 
