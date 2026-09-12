@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  /* tła */
+  --color-bg-app: #0A0F1C;
+ 
+  /* powierzchnie */
+  --color-surface: #131A2B;
+  --color-surface-2: #1A2338;
+ 
+  /* obramowania */
+  --color-border: #232D45;
+ 
+  /* akcent (niebieski) */
+  --color-blue: #3D7BFF;
+  --color-blue-dim: #23407A;
+  --color-blue-press: #2C5FE0;
+ 
+  /* tekst */
+  --color-text: #EDF1FB;
+  --color-text-muted: #8A93AD;
+  --color-text-faint: #5C6580;
+ 
+  /* statusy odpowiedzi w nauce */
+  --color-poor: #FF5C61;
+  --color-close: #FFB648;
+  --color-excellent: #3FD07E;
+ 
+  /* promień zaokrągleń kart */
+  --radius-card: 18px;
+ 
+  /* fonty */
+  --font-heading: "Manrope", sans-serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-app text-text
+  }
+}
