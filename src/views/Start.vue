@@ -23,7 +23,7 @@ import heroImage from '@/assets/cat2.png'
 
             <div class="flex flex-col gap-3 w-full pb-6">
                 <p class="text-text-muted">Pick up where you left off or explore your full word bank.</p>
-                <button type="button" class="bg-blue font-bold py-3 rounded-card">
+                <button type="button" class="bg-blue font-bold py-3 rounded-card text-text ">
                     Choose a Set
                 </button>
                 <button type="button" class="bg-transparent font-bold py-3 border rounded-card border-border">
