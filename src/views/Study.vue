@@ -1,7 +1,15 @@
 <script setup>
+import { onMounted } from 'vue'
+import { useStudySessionStore } from '@/stores/studySession'
 import Topbar from '@/components/Topbar.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 import Card from '@/components/Card.vue'
+
+const store = useStudySessionStore()
+onMounted(() => {
+  store.loadDeck() // docelowo: store.loadDeck(route.params.deckId)
+})
+
 </script>
 
 <template>
@@ -9,7 +17,7 @@ import Card from '@/components/Card.vue'
         <header class="shrink-0">
             <Topbar/>
             <ProgressBar
-                :current="7"
+                :current="store.progress"
                 :total="20"
                 class="shrink-0"
              />
