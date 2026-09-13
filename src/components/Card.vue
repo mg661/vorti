@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import vocab from '../data/vocab.json'
 
 defineProps({
     front: { type: String, required: true },

@@ -2,6 +2,8 @@
 import {ref} from 'vue'
 import Topbar from '@/components/Topbar.vue'
 import CardMin from '@/components/CardMin.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const tabs = ['All', 'Unmemorized', 'Memorized']
 const activeTab = ref('All')
@@ -167,10 +169,10 @@ const cards = [
             </div>
 
             <div class="flex flex-col gap-3 w-full pb-6 pt-3 shrink-0">
-                <button type="button" class="bg-blue font-bold py-3 rounded-card text-text">
+                <button type="button" class="bg-blue font-bold py-3 rounded-card text-text"  @click="router.push({ name: 'study' })">
                     Start Studying
                 </button>
-                <button type="button" class="bg-transparent font-bold py-3 border rounded-card border-border">
+                <button type="button" class="bg-transparent font-bold py-3 border rounded-card border-border"  @click="router.push({ name: 'study' })">
                     Study only Unmemorized
                 </button>
             </div>
