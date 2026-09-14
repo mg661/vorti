@@ -17,9 +17,9 @@ defineProps({
     
         <p class="text-base text-text-muted mb-4">{{ description }}</p>
 
-        <div class="flex gap-2">
+        <!-- <div class="flex gap-2">
             <button type="button" class="flex-1 py-2 rounded-card bg-blue text-text font-bold text-sm">Study All</button>
             <button type="button" class="flex-1 py-2 rounded-card bg-surface-2 border border-border text-text font-bold text-sm">Study Non-Mastered</button>
-        </div>
+        </div> -->
     </div>
 </template>

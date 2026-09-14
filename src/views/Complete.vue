@@ -1,6 +1,11 @@
 <script setup>
 import Topbar from '@/components/Topbar.vue'
 import { Check } from 'lucide-vue-next'
+import { useRouter } from 'vue-router'
+import { useStudySessionStore } from '@/stores/studySession'
+const store = useStudySessionStore()
+const router = useRouter()
+
 const poorCount = 4
 const masteredCount = 15
 </script>
@@ -24,12 +29,12 @@ const masteredCount = 15
         <!-- Stats -->
         <div class="flex gap-2.5 w-full">
           <div class="flex-1 bg-surface border border-border rounded-card py-3 px-2 text-center">
-            <div class="font-heading font-extrabold text-2xl text-poor">{{ poorCount }}</div>
+            <div class="font-heading font-extrabold text-2xl text-poor">{{ store.poorCount }}</div>
             <div class="text-base text-text-muted font-semibold mt-0.5">Poor</div>
           </div>
 
           <div class="flex-1 bg-surface border border-border rounded-card py-3 px-2 text-center">
-            <div class="font-heading font-extrabold text-2xl text-excellent">{{ masteredCount }}</div>
+            <div class="font-heading font-extrabold text-2xl text-excellent">{{ store.masteredCount }}</div>
             <div class="text-base text-text-muted font-semibold mt-0.5">Mastered</div>
           </div>
         </div>

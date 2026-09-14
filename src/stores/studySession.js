@@ -1,8 +1,6 @@
 // stores/studySession.js
 import { defineStore } from 'pinia'
 import { MOCK_CARDS } from '@/data/mockCards'
-import { useRouter } from 'vue-router'
-const router = useRouter()
 
 export const useStudySessionStore = defineStore('studySession', {
   state: () => ({
@@ -17,6 +15,9 @@ export const useStudySessionStore = defineStore('studySession', {
     total: (state) => state.cards.length,
     progress: (state) => state.currentIndex,
     isFinished: (state) => state.status === 'finished',
+
+    poorCount: (state) => state.results.filter(r => r.rating === 'poor').length,
+    masteredCount: (state) => state.results.filter(r => r.rating === 'excellent').length,
   },
 
   actions: {
