@@ -1,6 +1,8 @@
 // stores/studySession.js
 import { defineStore } from 'pinia'
 import { MOCK_CARDS } from '@/data/mockCards'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 export const useStudySessionStore = defineStore('studySession', {
   state: () => ({
@@ -40,5 +42,12 @@ export const useStudySessionStore = defineStore('studySession', {
         this.status = 'finished'
       }
     },
+
+    async saveResults() {
+      // docelowo: await supabase.from('study_results').insert(this.results)
+      // albo: await supabase.rpc('save_session_results', { results: this.results })
+      console.log('Saving results (mock):', this.results)
+    },
+
   },
 })
