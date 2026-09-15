@@ -6,6 +6,7 @@ export const MOCK_SETS = [
     category: "Languages",
     totalCards: 10,
     masteredCards: 0,
+    mastered: false
   },
   {
     id: 2,

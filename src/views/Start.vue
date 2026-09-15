@@ -3,6 +3,24 @@ import Topbar from '@/components/Topbar.vue'
 import heroImage from '@/assets/cat2.png'
 import { useRouter } from 'vue-router'
 const router = useRouter()
+
+import { onMounted } from 'vue'
+import { supabase } from '@/utils/utils/supabase'
+
+onMounted(async () => {
+  const { data, error } = await supabase
+    .from('sets')
+    .select('*')
+
+  if (error) {
+    console.error('❌ Supabase error:', error)
+    return
+  }
+
+  console.log('✅ Supabase connected!')
+  console.log('📦 Sets:', data)
+})
+
 </script>
 
 <template>
