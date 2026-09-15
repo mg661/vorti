@@ -21,11 +21,14 @@ export const useStudySessionStore = defineStore('studySession', {
   },
 
   actions: {
-    async loadDeck(deckId) {
+    async loadDeck(deckId, filter) {
       this.status = 'loading'
       try {
         // docelowo: const { data } = await supabase.from('cards').select('*').eq('deck_id', deckId)
-        this.cards = MOCK_CARDS
+        this.cards = MOCK_CARDS.filter(c => {
+          if (c.set_id !== Number(deckId)) return false
+          return filter !== 'unmemorized' || !c.mastered
+        })
         this.currentIndex = 0
         this.results = []
         this.status = 'ready'

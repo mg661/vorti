@@ -4,12 +4,13 @@ import { useStudySessionStore } from '@/stores/studySession'
 import Topbar from '@/components/Topbar.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 import Card from '@/components/Card.vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+const route = useRoute()
 const router = useRouter()
 
 const store = useStudySessionStore()
 onMounted(() => {
-  store.loadDeck() // docelowo: store.loadDeck(route.params.deckId)
+    store.loadDeck(route.params.setId, route.query.filter)
 })
 
 async function handleAnswer(rating) {
@@ -32,7 +33,7 @@ async function finishStudy() {
             <Topbar/>
             <ProgressBar
                 :current="store.progress"
-                :total="20"
+                :total="store.total"
                 class="shrink-0"
              />
         </header>

@@ -21,12 +21,12 @@ const routes = [
         component: Sets
     },
      {
-        path: '/cards',
+        path: '/sets/:setId/cards',
         name: 'cards',
         component: Cards
     },
      {
-        path: '/study',
+          path: '/study/:setId',
         name: 'study',
         component: Study
     },

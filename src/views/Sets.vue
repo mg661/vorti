@@ -1,8 +1,10 @@
 <script setup>
-import {ref} from 'vue'
-import SetCard from '@/components/SetCard.vue';
+import { ref, computed, onMounted } from 'vue'
+import { useSetsStore } from '@/stores/sets'
+import SetCard from '@/components/SetCard.vue'
 import Topbar from '@/components/Topbar.vue'
 
+const store = useSetsStore()
 const tabs = ['All', 'Mastered', 'Not Mastered']
 const activeTab = ref('All')
 
@@ -36,7 +38,20 @@ const sets = [
     masteredCards: 3,
   },
 ]
+
+onMounted(() => {
+  store.loadSets()
+})
+
+const filteredSets = computed(() => {
+  if (activeTab.value === 'Mastered') return store.masteredSets
+  if (activeTab.value === 'Not Mastered') return store.notMasteredSets
+  return store.sets
+})
+
 </script>
+
+
 
 <template>
     <div class="flex flex-col min-h-screen">
@@ -61,14 +76,17 @@ const sets = [
             </button>
             </div>
 
+             <div v-if="store.status === 'loading'">Ładowanie...</div>
+
             <SetCard
-            v-for="set in sets"
+            v-for="set in filteredSets"
             :key="set.id"
             :title="set.title"
             :description="set.description"
             :total-cards="set.totalCards"
             :mastered-cards="set.masteredCards"
             class="mb-3"
+            @click="$router.push({ name: 'cards', params: { setId: set.id } })"
             />
         </main>
     </div>
