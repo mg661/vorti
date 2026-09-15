@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 import { onMounted } from 'vue'
-import { supabase } from '@/utils/utils/supabase'
+import { supabase } from '@/utils/supabase'
 
 onMounted(async () => {
   const { data, error } = await supabase
