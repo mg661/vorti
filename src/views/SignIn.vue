@@ -1,7 +1,29 @@
 <script setup>
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { PawPrint } from 'lucide-vue-next'
+import { useAuthStore } from '@/stores/auth'
+
 const router = useRouter()
+const authStore = useAuthStore()
+
+const email = ref('')
+const password = ref('')
+const errorMsg = ref('')
+const isSubmitting = ref(false)
+
+async function handleSignIn() {
+  errorMsg.value = ''
+  isSubmitting.value = true
+  try {
+    await authStore.signIn(email.value, password.value)
+    router.push({ name: 'start' })
+  } catch (err) {
+    errorMsg.value = err.message
+  } finally {
+    isSubmitting.value = false
+  }
+}
 </script>
 
 <template>
@@ -16,12 +38,15 @@ const router = useRouter()
                 <p class="text-text-muted text-base">Sign in to continue your learning streak.</p>
             </div>
 
-            <div class="flex flex-col gap-3.5 w-full text-left">
+            <form class="flex flex-col gap-3.5 w-full text-left" @submit.prevent="handleSignIn">
                 <div class="flex flex-col gap-1.5">
                     <label class="text-text-muted text-base font-bold">Email</label>
                     <input
+                        v-model="email"
                         type="email"
                         placeholder="you@email.com"
+                        autocomplete="email"
+                        required
                         class="h-12 rounded-card bg-surface border border-border px-4 text-base text-text placeholder:text-text-faint focus:outline-none focus:border-blue"
                     >
                 </div>
@@ -29,8 +54,11 @@ const router = useRouter()
                 <div class="flex flex-col gap-1.5">
                     <label class="text-text-muted text-base font-bold">Password</label>
                     <input
+                        v-model="password"
                         type="password"
                         placeholder="••••••••"
+                        autocomplete="current-password"
+                        required
                         class="h-12 rounded-card bg-surface border border-border px-4 text-base text-text placeholder:text-text-faint focus:outline-none focus:border-blue"
                     >
                 </div>
@@ -40,18 +68,24 @@ const router = useRouter()
                         Forgot password?
                     </button>
                 </div>
-            </div>
 
-            <div class="flex flex-col gap-3 w-full">
-                <button type="button" class="bg-blue font-bold py-3 rounded-card text-text" @click="router.push({ name: 'start' })">
-                    Sign In
-                </button>
+                <p v-if="errorMsg" class="text-red-500 text-sm">{{ errorMsg }}</p>
 
-                <div class="text-text-muted text-sm">
-                    Don't have an account?
-                    <span class="text-blue font-bold">Sign Up</span>
+                <div class="flex flex-col gap-3 w-full">
+                    <button
+                        type="submit"
+                        :disabled="isSubmitting"
+                        class="bg-blue font-bold py-3 rounded-card text-text disabled:opacity-60"
+                    >
+                        {{ isSubmitting ? 'Signing in...' : 'Sign In' }}
+                    </button>
+
+                    <div class="text-text-muted text-sm text-center">
+                        Don't have an account?
+                        <span class="text-blue font-bold">Sign Up</span>
+                    </div>
                 </div>
-            </div>
+            </form>
         </main>
     </div>
 </template>
