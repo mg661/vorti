@@ -7,6 +7,7 @@ import Study from '@/views/Study.vue'
 import Complete from '@/views/Complete.vue'
 import WordsBank from '@/views/WordsBank.vue'
 import Profile from '@/views/Profile.vue'
+import SignIn from '@/views/SignIn.vue'
 
 
 const routes = [
@@ -44,6 +45,11 @@ const routes = [
         path: '/profile',
         name: 'profile',
         component: Profile
+    },
+     {
+        path: '/signin',
+        name: 'signin',
+        component: SignIn
     }
 ]
 

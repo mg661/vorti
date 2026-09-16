@@ -11,4 +11,10 @@ if (!supabaseUrl || !supabaseKey) {
 	)
 }
 
-export const supabase = createClient(supabaseUrl, supabaseKey)
+export const supabase = createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    persistSession: true,      // sesja w localStorage
+    autoRefreshToken: true,    // auto-odświeżanie access tokena
+    detectSessionInUrl: true,  // ważne dla magic link / OAuth redirect
+  },
+})
