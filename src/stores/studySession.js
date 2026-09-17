@@ -7,6 +7,8 @@ export const useStudySessionStore = defineStore('studySession', {
   state: () => ({
     cards: [],
     currentIndex: 0,
+    currentSetId: null,
+    currentFilter: null,
     results: [],      // { cardId, rating }
     status: 'idle',   // idle | loading | ready | finished | error
   }),
@@ -25,6 +27,9 @@ export const useStudySessionStore = defineStore('studySession', {
     async loadDeck(deckId, filter) {
       this.status = 'loading'
       try {
+        this.currentSetId = Number(deckId)
+        this.currentFilter = filter ?? null
+
         // docelowo: const { data } = await supabase.from('cards').select('*').eq('deck_id', deckId)
         this.cards = MOCK_CARDS.filter(c => {
           if (c.set_id !== Number(deckId)) return false

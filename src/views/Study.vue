@@ -23,7 +23,10 @@ async function handleAnswer(rating) {
 
 async function finishStudy() {
   await store.saveResults() // zapis wyników (na razie mock, docelowo Supabase)
-  router.push({ name: 'complete'})
+  router.push({
+    name: 'complete',
+    query: { setId: String(route.params.setId) }
+  })
 }
 </script>
 

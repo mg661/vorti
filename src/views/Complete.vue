@@ -1,13 +1,27 @@
 <script setup>
+import { computed } from 'vue'
 import Topbar from '@/components/Topbar.vue'
 import { Check } from 'lucide-vue-next'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useStudySessionStore } from '@/stores/studySession'
+
+const route = useRoute()
 const store = useStudySessionStore()
 const router = useRouter()
 
-const poorCount = 4
-const masteredCount = 15
+const setId = computed(() => {
+  const value = store.currentSetId ?? route.query.setId
+  return value ? Number(value) : null
+})
+
+function goBackToSetCards() {
+  if (!setId.value) return
+
+  router.push({
+    name: 'cards',
+    params: { setId: String(setId.value) }
+  })
+}
 </script>
 
 <template>
@@ -42,20 +56,22 @@ const masteredCount = 15
 
       <!-- Buttons -->
       <div class="w-full flex flex-col gap-2.5">
-        <button type="button" class="bg-blue font-bold py-3 rounded-card text-text">
-          Study Again (All Cards)
+        <button
+          type="button"
+          class="bg-blue font-bold py-3 rounded-card text-text"
+          @click="goBackToSetCards"
+        >
+          Back to This Set’s Cards
         </button>
 
         <button
           type="button"
           class="bg-transparent font-bold py-3 border rounded-card border-border text-text"
-        >
-          Study Again (Unmastered Only)
+        @click="router.push({name: 'sets'})"
+          >
+          Back to all Sets
         </button>
 
-        <button type="button" class="bg-transparent font-bold py-3 rounded-card text-text-muted">
-          Back to Set
-        </button>
       </div>
     </main>
   </div>
