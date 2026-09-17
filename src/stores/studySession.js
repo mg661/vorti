@@ -1,6 +1,7 @@
 // stores/studySession.js
 import { defineStore } from 'pinia'
 import { MOCK_CARDS } from '@/data/mockCards'
+import { supabase } from '@/utils/supabase'
 
 export const useStudySessionStore = defineStore('studySession', {
   state: () => ({
@@ -48,9 +49,19 @@ export const useStudySessionStore = defineStore('studySession', {
     },
 
     async saveResults() {
-      // docelowo: await supabase.from('study_results').insert(this.results)
-      // albo: await supabase.rpc('save_session_results', { results: this.results })
-      console.log('Saving results (mock):', this.results)
+      if (this.results.length === 0) return
+
+      const { error } = await supabase.rpc('save_session_results', {
+        results: this.results.map(r => ({
+          cardId: r.cardId,
+          rating: r.rating,
+        })),
+      })
+
+      if (error) {
+        console.error('Nie udało się zapisać wyników:', error)
+        throw error
+      }
     },
 
   },
