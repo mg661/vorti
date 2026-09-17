@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { MOCK_SETS } from '@/data/mockSets'
+import { supabase } from '@/utils/supabase'
 
 export const useSetsStore = defineStore('sets', {
   state: () => ({
@@ -13,15 +13,27 @@ export const useSetsStore = defineStore('sets', {
   },
 
   actions: {
-    async loadSets() {
-      this.status = 'loading'
-      try {
-        // docelowo: const { data } = await supabase.from('sets').select('*')
-        this.sets = MOCK_SETS
-        this.status = 'ready'
-      } catch (e) {
-        this.status = 'error'
-      }
-    },
+   async loadSets() {
+  this.status = 'loading'
+  try {
+    const { data, error } = await supabase.rpc('get_sets_with_progress')
+    if (error) throw error
+
+    this.sets = data.map(set => ({
+      id: set.id,
+      title: set.title,
+      description: set.description,
+      category: set.category,
+      totalCards: set.total_cards,
+      masteredCards: set.mastered_cards,
+      mastered: set.mastered
+    }))
+
+    this.status = 'ready'
+  } catch (e) {
+    console.error(e)
+    this.status = 'error'
+  }
+},
   },
 })

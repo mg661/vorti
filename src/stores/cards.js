@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { MOCK_CARDS } from '@/data/mockCards'
+import { supabase } from '@/utils/supabase'
 
 export const useCardsStore = defineStore('cards', {
   state: () => ({
@@ -11,10 +11,15 @@ export const useCardsStore = defineStore('cards', {
     async loadCardsForSet(setId) {
       this.status = 'loading'
       try {
-        // docelowo: const { data } = await supabase.from('cards').select('*').eq('set_id', setId)
-        this.cards = MOCK_CARDS.filter(c => c.set_id === Number(setId))
+        const { data, error } = await supabase.rpc('get_cards_for_set', {
+          p_set_id: Number(setId),
+        })
+        if (error) throw error
+
+        this.cards = data
         this.status = 'ready'
       } catch (e) {
+        console.error(e)
         this.status = 'error'
       }
     },

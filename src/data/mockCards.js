@@ -7,7 +7,7 @@ export const MOCK_CARDS = [
     example: "We need to negotiate the terms of the contract before signing.",
     back: "negocjować",
     meaning: "To discuss something in order to reach an agreement.",
-    mastered: false,
+    category: "business",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ export const MOCK_CARDS = [
     example: "I have a doctor's appointment tomorrow morning.",
     back: "wizyta / spotkanie",
     meaning: "An arrangement to meet someone at a particular time.",
-    mastered: false,
+    category: "everyday",
   },
   {
     id: 3,
@@ -24,9 +24,8 @@ export const MOCK_CARDS = [
     front: "reliable",
     example: "She is very reliable and always keeps her promises.",
     back: "niezawodny / godny zaufania",
-    meaning:
-      "Someone or something that can be trusted to work well or behave as expected.",
-    mastered: false,
+    meaning: "Someone or something that can be trusted to work well or behave as expected.",
+    category: "adjectives",
   },
   {
     id: 4,
@@ -35,7 +34,7 @@ export const MOCK_CARDS = [
     example: "I can't afford to buy a new car right now.",
     back: "móc sobie pozwolić",
     meaning: "To have enough money to pay for something.",
-    mastered: false,
+    category: "finance",
   },
   {
     id: 5,
@@ -44,7 +43,7 @@ export const MOCK_CARDS = [
     example: "I want to improve my English before traveling abroad.",
     back: "poprawiać",
     meaning: "To make something better.",
-    mastered: false,
+    category: "general",
   },
   {
     id: 6,
@@ -52,9 +51,8 @@ export const MOCK_CARDS = [
     front: "schedule",
     example: "Let me check my schedule before I confirm the meeting.",
     back: "harmonogram / planować",
-    meaning:
-      "A plan that shows when activities or events will happen.",
-    mastered: false,
+    meaning: "A plan that shows when activities or events will happen.",
+    category: "everyday",
   },
   {
     id: 7,
@@ -62,9 +60,8 @@ export const MOCK_CARDS = [
     front: "borrow",
     example: "Can I borrow your laptop for a few hours?",
     back: "pożyczyć",
-    meaning:
-      "To take and use something that belongs to someone else with the intention of returning it.",
-    mastered: false,
+    meaning: "To take and use something that belongs to someone else with the intention of returning it.",
+    category: "everyday",
   },
   {
     id: 8,
@@ -73,7 +70,7 @@ export const MOCK_CARDS = [
     example: "Although it was raining, we went for a walk.",
     back: "chociaż / mimo że",
     meaning: "Used to introduce a contrast or unexpected fact.",
-    mastered: false,
+    category: "grammar",
   },
   {
     id: 9,
@@ -81,9 +78,8 @@ export const MOCK_CARDS = [
     front: "opportunity",
     example: "This job is a great opportunity to gain experience.",
     back: "okazja / możliwość",
-    meaning:
-      "A favorable situation that makes it possible to do something.",
-    mastered: false,
+    meaning: "A favorable situation that makes it possible to do something.",
+    category: "general",
   },
   {
     id: 10,
@@ -92,7 +88,7 @@ export const MOCK_CARDS = [
     example: "She feels confident about her English exam.",
     back: "pewny siebie",
     meaning: "Feeling sure about your abilities or decisions.",
-    mastered: false,
+    category: "adjectives",
   },
 
   // JavaScript Fundamentals
@@ -100,19 +96,17 @@ export const MOCK_CARDS = [
     id: 11,
     set_id: 2,
     front: "let",
-    back: "Słowo kluczowe służące do deklarowania zmiennej o zasięgu blokowym.",
-    meaning:
-      "let pozwala tworzyć zmienne, których wartość może zostać później zmieniona.",
-    mastered: false,
+    back: "A keyword used to declare a block-scoped variable that can be reassigned.",
+    meaning: "let allows you to create variables whose values can change.",
+    category: "variables",
   },
   {
     id: 12,
     set_id: 2,
     front: "const",
-    back: "Słowo kluczowe służące do deklarowania zmiennej, której nie można ponownie przypisać.",
-    meaning:
-      "const jest używane, gdy przypisanie do zmiennej nie powinno zostać zmienione.",
-    mastered: false,
+    back: "A keyword used to declare a block-scoped variable that cannot be reassigned.",
+    meaning: "const is used when a variable binding should not be reassigned.",
+    category: "variables",
   },
   {
     id: 13,
@@ -121,7 +115,7 @@ export const MOCK_CARDS = [
     example: "const add = (a, b) => a + b;",
     back: "funkcja strzałkowa",
     meaning: "A shorter syntax for writing functions in JavaScript.",
-    mastered: false,
+    category: "functions",
   },
   {
     id: 14,
@@ -130,7 +124,7 @@ export const MOCK_CARDS = [
     example: "const fruits = ['apple', 'banana', 'orange'];",
     back: "tablica",
     meaning: "An ordered collection of values.",
-    mastered: false,
+    category: "data structures",
   },
   {
     id: 15,
@@ -138,9 +132,8 @@ export const MOCK_CARDS = [
     front: "object",
     example: "const user = { name: 'John', age: 25 };",
     back: "obiekt",
-    meaning:
-      "A collection of key-value pairs used to represent structured data.",
-    mastered: false,
+    meaning: "A collection of key-value pairs used to represent structured data.",
+    category: "data structures",
   },
   {
     id: 16,
@@ -148,9 +141,8 @@ export const MOCK_CARDS = [
     front: "map()",
     example: "const doubled = numbers.map(n => n * 2);",
     back: "map()",
-    meaning:
-      "A method that creates a new array by applying a function to every element.",
-    mastered: false,
+    meaning: "A method that creates a new array by applying a function to every element.",
+    category: "arrays",
   },
   {
     id: 17,
@@ -158,27 +150,24 @@ export const MOCK_CARDS = [
     front: "filter()",
     example: "const adults = users.filter(user => user.age >= 18);",
     back: "filter()",
-    meaning:
-      "A method that creates a new array containing elements that pass a condition.",
-    mastered: false,
+    meaning: "A method that creates a new array containing elements that pass a condition.",
+    category: "arrays",
   },
   {
     id: 18,
     set_id: 2,
-    front: "===",
+    front: "=== ",
     back: "ścisłe porównanie",
-    meaning:
-      "An operator that checks both value and type without type coercion.",
-    mastered: false,
+    meaning: "An operator that checks both value and type without type coercion.",
+    category: "operators",
   },
   {
     id: 19,
     set_id: 2,
     front: "undefined",
     back: "undefined / niezdefiniowany",
-    meaning:
-      "A value that indicates that a variable has been declared but has not been assigned a value.",
-    mastered: false,
+    meaning: "A value that indicates that a variable has been declared but has not been assigned a value.",
+    category: "types",
   },
   {
     id: 20,
@@ -186,9 +175,8 @@ export const MOCK_CARDS = [
     front: "Promise",
     example: "fetch('/api/users').then(response => response.json());",
     back: "Promise",
-    meaning:
-      "An object representing the eventual completion or failure of an asynchronous operation.",
-    mastered: false,
+    meaning: "An object representing the eventual completion or failure of an asynchronous operation.",
+    category: "async",
   },
 
   // World Geography
@@ -198,43 +186,39 @@ export const MOCK_CARDS = [
     front: "Capital of France",
     back: "Paris",
     meaning: "Paris is the capital and largest city of France.",
-    mastered: false,
+    category: "capitals",
   },
   {
     id: 22,
     set_id: 3,
     front: "Capital of Japan",
     back: "Tokyo",
-    meaning:
-      "Tokyo is the capital and largest metropolitan area of Japan.",
-    mastered: false,
+    meaning: "Tokyo is the capital and largest metropolitan area of Japan.",
+    category: "capitals",
   },
   {
     id: 23,
     set_id: 3,
     front: "Largest continent",
     back: "Asia",
-    meaning:
-      "Asia is the largest continent by both area and population.",
-    mastered: false,
+    meaning: "Asia is the largest continent by both area and population.",
+    category: "continents",
   },
   {
     id: 24,
     set_id: 3,
     front: "Largest ocean",
     back: "Pacific Ocean",
-    meaning:
-      "The Pacific Ocean is the largest and deepest ocean on Earth.",
-    mastered: false,
+    meaning: "The Pacific Ocean is the largest and deepest ocean on Earth.",
+    category: "oceans",
   },
   {
     id: 25,
     set_id: 3,
     front: "Highest mountain",
     back: "Mount Everest",
-    meaning:
-      "Mount Everest is the highest mountain above sea level.",
-    mastered: false,
+    meaning: "Mount Everest is the highest mountain above sea level.",
+    category: "mountains",
   },
   {
     id: 26,
@@ -242,25 +226,23 @@ export const MOCK_CARDS = [
     front: "Capital of Australia",
     back: "Canberra",
     meaning: "Canberra is the capital city of Australia.",
-    mastered: false,
+    category: "capitals",
   },
   {
     id: 27,
     set_id: 3,
     front: "Largest country by area",
     back: "Russia",
-    meaning:
-      "Russia is the world's largest country by total area.",
-    mastered: false,
+    meaning: "Russia is the world's largest country by total area.",
+    category: "countries",
   },
   {
     id: 28,
     set_id: 3,
     front: "Sahara Desert",
     back: "Africa",
-    meaning:
-      "The Sahara is the largest hot desert in the world and is located in North Africa.",
-    mastered: false,
+    meaning: "The Sahara is the largest hot desert in the world and is located in North Africa.",
+    category: "landforms",
   },
   {
     id: 29,
@@ -268,16 +250,15 @@ export const MOCK_CARDS = [
     front: "Capital of Canada",
     back: "Ottawa",
     meaning: "Ottawa is the capital city of Canada.",
-    mastered: false,
+    category: "capitals",
   },
   {
     id: 30,
     set_id: 3,
     front: "Amazon River",
     back: "South America",
-    meaning:
-      "The Amazon River flows through South America and has the largest drainage basin in the world.",
-    mastered: false,
+    meaning: "The Amazon River flows through South America and has the largest drainage basin in the world.",
+    category: "rivers",
   },
 
   // Modern History
@@ -286,89 +267,79 @@ export const MOCK_CARDS = [
     set_id: 4,
     front: "Start of World War I",
     back: "1914",
-    meaning:
-      "World War I began in 1914 following the assassination of Archduke Franz Ferdinand.",
-    mastered: false,
+    meaning: "World War I began in 1914 following the assassination of Archduke Franz Ferdinand.",
+    category: "world wars",
   },
   {
     id: 32,
     set_id: 4,
     front: "End of World War I",
     back: "1918",
-    meaning:
-      "World War I ended in 1918 with the defeat of the Central Powers.",
-    mastered: false,
+    meaning: "World War I ended in 1918 with the defeat of the Central Powers.",
+    category: "world wars",
   },
   {
     id: 33,
     set_id: 4,
     front: "Start of World War II",
     back: "1939",
-    meaning:
-      "World War II began in Europe in 1939 after Germany invaded Poland.",
-    mastered: false,
+    meaning: "World War II began in Europe in 1939 after Germany invaded Poland.",
+    category: "world wars",
   },
   {
     id: 34,
     set_id: 4,
     front: "End of World War II",
     back: "1945",
-    meaning:
-      "World War II ended in 1945 after the defeat of Germany and Japan.",
-    mastered: false,
+    meaning: "World War II ended in 1945 after the defeat of Germany and Japan.",
+    category: "world wars",
   },
   {
     id: 35,
     set_id: 4,
     front: "First person on the Moon",
     back: "Neil Armstrong",
-    meaning:
-      "Neil Armstrong became the first person to walk on the Moon in 1969.",
-    mastered: false,
+    meaning: "Neil Armstrong became the first person to walk on the Moon in 1969.",
+    category: "space",
   },
   {
     id: 36,
     set_id: 4,
     front: "Moon landing",
     back: "1969",
-    meaning:
-      "Apollo 11 successfully landed humans on the Moon in July 1969.",
-    mastered: false,
+    meaning: "Apollo 11 successfully landed humans on the Moon in July 1969.",
+    category: "space",
   },
   {
     id: 37,
     set_id: 4,
     front: "Fall of the Berlin Wall",
     back: "1989",
-    meaning:
-      "The Berlin Wall fell in November 1989, becoming a major symbol of the end of the Cold War.",
-    mastered: false,
+    meaning: "The Berlin Wall fell in November 1989, becoming a major symbol of the end of the Cold War.",
+    category: "cold war",
   },
   {
     id: 38,
     set_id: 4,
     front: "Cold War",
     back: "1947–1991",
-    meaning:
-      "A period of geopolitical tension primarily between the United States and the Soviet Union.",
-    mastered: false,
+    meaning: "A period of geopolitical tension primarily between the United States and the Soviet Union.",
+    category: "cold war",
   },
   {
     id: 39,
     set_id: 4,
     front: "First president of the United States",
     back: "George Washington",
-    meaning:
-      "George Washington served as the first President of the United States.",
-    mastered: false,
+    meaning: "George Washington served as the first President of the United States.",
+    category: "politics",
   },
   {
     id: 40,
     set_id: 4,
     front: "French Revolution",
     back: "1789",
-    meaning:
-      "A major political and social revolution that began in France in 1789.",
-    mastered: false,
+    meaning: "A major political and social revolution that began in France in 1789.",
+    category: "revolutions",
   },
 ];
