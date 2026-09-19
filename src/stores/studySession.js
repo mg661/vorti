@@ -46,7 +46,7 @@ export const useStudySessionStore = defineStore('studySession', {
   }
 },
 
-    answer(rating) {
+     answer(rating) {
       const card = this.currentCard
       if (!card) return
       this.results.push({ cardId: card.id, rating })

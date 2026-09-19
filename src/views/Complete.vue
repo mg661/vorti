@@ -25,7 +25,7 @@ function goBackToSetCards() {
 </script>
 
 <template>
-  <div class="flex flex-col h-dvh w-full max-w-md mx-auto bg-bg-app text-text font-sans">
+  <div class="flex flex-col h-full w-full max-w-md mx-auto bg-bg-app text-text font-sans">
     <header class="shrink-0">
       <Topbar />
     </header>

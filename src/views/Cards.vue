@@ -51,7 +51,7 @@ function studyUnmemorizedOnly() {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen">
+  <div class="flex flex-col h-full">
     <header class="shrink-0">
       <Topbar />
     </header>
@@ -78,11 +78,10 @@ function studyUnmemorizedOnly() {
       </div>
 
       <div v-if="cardsStore.status === 'loading'" class="flex-1 flex items-center justify-center">
-        Ładowanie...
       </div>
 
       <div v-else-if="filteredCards.length === 0" class="flex-1 flex items-center justify-center text-text-muted">
-        Brak kart w tej kategorii.
+        No cards in this category.
       </div>
 
       <div v-else class="flex-1 overflow-y-auto min-h-0">

@@ -27,7 +27,7 @@ async function handleSignIn() {
 </script>
 
 <template>
-    <div class="flex flex-col min-h-screen">
+    <div class="flex flex-col h-full">
         <main class="flex-1 flex flex-col items-center justify-center px-4 text-center gap-6">
             <div class="w-14 h-14 rounded-card bg-linear-to-br from-blue to-[#1E3E8F] flex items-center justify-center">
                 <PawPrint class="w-6 h-6 text-white" :stroke-width="2" />

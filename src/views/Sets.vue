@@ -54,7 +54,7 @@ const filteredSets = computed(() => {
 
 
 <template>
-    <div class="flex flex-col min-h-screen">
+    <div class="flex flex-col h-full">
         <header>
             <Topbar/>
         </header>
@@ -76,7 +76,7 @@ const filteredSets = computed(() => {
             </button>
             </div>
 
-             <div v-if="store.status === 'loading'">Ładowanie...</div>
+             <div v-if="store.status === 'loading'"></div>
 
             <SetCard
             v-for="set in filteredSets"

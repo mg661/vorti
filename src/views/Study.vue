@@ -22,16 +22,17 @@ async function handleAnswer(rating) {
 }
 
 async function finishStudy() {
-  await store.saveResults() // zapis wyników (na razie mock, docelowo Supabase)
+  
   router.push({
     name: 'complete',
     query: { setId: String(route.params.setId) }
   })
+   await store.saveResults()
 }
 </script>
 
 <template>
-    <div class="flex flex-col h-screen overflow-hidden">
+    <div class="flex flex-col h-full overflow-hidden">
         <header class="shrink-0">
             <Topbar/>
             <ProgressBar
