@@ -1,6 +1,5 @@
 // stores/studySession.js
 import { defineStore } from 'pinia'
-import { MOCK_CARDS } from '@/data/mockCards'
 import { supabase } from '@/utils/supabase'
 
 export const useStudySessionStore = defineStore('studySession', {
@@ -25,23 +24,27 @@ export const useStudySessionStore = defineStore('studySession', {
 
   actions: {
     async loadDeck(deckId, filter) {
-      this.status = 'loading'
-      try {
-        this.currentSetId = Number(deckId)
-        this.currentFilter = filter ?? null
+  this.status = 'loading'
+  try {
+    this.currentSetId = Number(deckId)
+    this.currentFilter = filter ?? null
 
-        // docelowo: const { data } = await supabase.from('cards').select('*').eq('deck_id', deckId)
-        this.cards = MOCK_CARDS.filter(c => {
-          if (c.set_id !== Number(deckId)) return false
-          return filter !== 'unmemorized' || !c.mastered
-        })
-        this.currentIndex = 0
-        this.results = []
-        this.status = 'ready'
-      } catch (e) {
-        this.status = 'error'
-      }
-    },
+    const { data, error } = await supabase.rpc('get_cards_for_set', {
+      p_set_id: Number(deckId),
+    })
+    if (error) throw error
+
+    this.cards = filter === 'unmemorized'
+      ? data.filter(c => !c.mastered)
+      : data
+    this.currentIndex = 0
+    this.results = []
+    this.status = 'ready'
+  } catch (e) {
+    console.error(e)
+    this.status = 'error'
+  }
+},
 
     answer(rating) {
       const card = this.currentCard
