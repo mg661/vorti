@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vocabulary App — Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-app: #0A0F1C;
+    --bg-page: #05070C;
+    --surface: #131A2B;
+    --surface-2: #1A2338;
+    --border: #232D45;
+    --blue: #3D7BFF;
+    --blue-dim: #23407A;
+    --blue-press: #2C5FE0;
+    --text: #EDF1FB;
+    --text-muted: #8A93AD;
+    --text-faint: #5C6580;
+    --poor: #FF5C61;
+    --close: #FFB648;
+    --excellent: #3FD07E;
+    --radius: 18px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg-page);
+    font-family:'Inter', sans-serif;
+    color:var(--text);
+    padding:48px 40px 80px;
+  }
+  .intro{
+    max-width:880px;
+    margin:0 auto 44px;
+  }
+  .intro h1{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:28px;
+    letter-spacing:-0.02em;
+  }
+  .intro p{
+    color:var(--text-muted);
+    margin-top:8px;
+    font-size:15px;
+    line-height:1.5;
+    max-width:640px;
+  }
+  .gallery{
+    display:flex;
+    flex-wrap:wrap;
+    gap:40px;
+    justify-content:center;
+    align-items:flex-start;
+  }
+  .frame-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+  }
+  .frame-label{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    color:var(--text-muted);
+    letter-spacing:0.02em;
+  }
+  .phone{
+    width:340px;
+    height:734px;
+    background:#000;
+    border-radius:44px;
+    padding:12px;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+  .screen{
+    width:100%;
+    height:100%;
+    background:var(--bg-app);
+    border-radius:34px;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+  .notch{
+    position:absolute;
+    top:12px;
+    left:50%;
+    transform:translateX(-50%);
+    width:110px;
+    height:22px;
+    background:#000;
+    border-radius:14px;
+    z-index:20;
+  }
+
+  /* Top bar shared */
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:44px 18px 12px;
+    flex-shrink:0;
+  }
+  .icon-btn{
+    width:36px;
+    height:36px;
+    border-radius:11px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .icon-btn svg{ width:18px; height:18px; stroke:var(--text); fill:none; stroke-width:1.8; }
+  .avatar{
+    width:36px;
+    height:36px;
+    border-radius:11px;
+    background:linear-gradient(135deg, var(--blue), #1E3E8F);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:13px;
+  }
+  .topbar-title{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color:var(--text-muted);
+  }
+
+  .content{
+    flex:1;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    padding:0 18px;
+  }
+  h2.screen-title{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:-0.01em;
+    margin:6px 0 14px;
+  }
+
+  /* Tabs */
+  .tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:16px;
+  }
+  .tab{
+    flex:1;
+    padding:7px 10px;
+    border-radius:20px;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--text-muted);
+    background:var(--surface);
+    border:1px solid var(--border);
+    text-align:center;
+  }
+  .tab.active{
+    background:var(--blue);
+    color:#fff;
+    border-color:var(--blue);
+  }
+
+  /* Buttons */
+  .btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:46px;
+    border-radius:13px;
+    font-weight:700;
+    font-size:14px;
+    font-family:'Inter',sans-serif;
+    border:none;
+    width:100%;
+  }
+  .btn-blue{ background:var(--blue); color:#fff; }
+  .btn-outline{ background:transparent; color:var(--text); border:1.5px solid var(--border); }
+  .btn-ghost{ background:transparent; color:var(--text-muted); font-weight:600; }
+  .btn-sm{
+    flex:1;
+    height:38px;
+    border-radius:10px;
+    font-size:12.5px;
+    font-weight:700;
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    line-height:1.25;
+    padding:0 6px;
+  }
+
+  /* SCREEN 1 — Sets */
+  .set-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px;
+    margin-bottom:12px;
+    flex-shrink:0;
+  }
+  .set-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:6px;
+  }
+  .set-title{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:15.5px;
+  }
+  .set-progress-pill{
+    font-size:10.5px;
+    font-weight:700;
+    color:var(--excellent);
+    background:rgba(63,208,126,0.12);
+    padding:3px 8px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .set-desc{
+    font-size:12.5px;
+    color:var(--text-muted);
+    line-height:1.4;
+    margin-bottom:14px;
+  }
+  .set-btns{ display:flex; gap:8px; }
+  .set-btns .btn-sm.primary{ background:var(--blue); color:#fff; }
+  .set-btns .btn-sm.secondary{ background:var(--surface-2); color:var(--text); border:1px solid var(--border); }
+  .scroll-y{ overflow-y:auto; flex:1; padding-bottom:16px; }
+  .scroll-y::-webkit-scrollbar{ display:none; }
+
+  /* SCREEN 2 — Cards grid */
+  .card-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    padding-bottom:14px;
+  }
+  .flashcard{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:12px 10px;
+    height:92px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .flashcard .front{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:14px;
+  }
+  .flashcard .back{
+    font-size:11.5px;
+    color:var(--text-muted);
+  }
+  .flashcard .divider{
+    height:1px;
+    background:var(--border);
+    margin:6px 0;
+  }
+  .flashcard.memorized{ border-color:rgba(63,208,126,0.35); }
+  .flashcard .dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--excellent);
+    position:relative; top:-1px;
+  }
+  .bottom-fixed{
+    padding:14px 0 20px;
+    flex-shrink:0;
+  }
+
+  /* SCREEN 3 — Study */
+  .progress-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:8px 0 40px;
+  }
+  .progress-track{
+    flex:1;
+    height:6px;
+    border-radius:4px;
+    background:var(--surface-2);
+    overflow:hidden;
+  }
+  .progress-fill{
+    width:40%;
+    height:100%;
+    background:var(--blue);
+    border-radius:4px;
+  }
+  .progress-count{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    color:var(--text-muted);
+    white-space:nowrap;
+  }
+  .study-card{
+    flex:1;
+    background:linear-gradient(160deg, var(--surface-2), var(--surface));
+    border:1px solid var(--border);
+    border-radius:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:24px;
+    position:relative;
+  }
+  .study-card .word{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:30px;
+    letter-spacing:-0.01em;
+  }
+  .study-card .hint{
+    font-size:11.5px;
+    color:var(--text-faint);
+    position:absolute;
+    bottom:18px;
+  }
+  .answer-row{ display:flex; gap:8px; padding-bottom:20px; }
+  .answer-btn{
+    flex:1;
+    height:52px;
+    border-radius:14px;
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    color:#fff;
+    border:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+  }
+  .answer-btn span.sub{ font-size:9.5px; font-weight:600; opacity:0.85; }
+  .answer-btn.poor{ background:var(--poor); }
+  .answer-btn.close{ background:var(--close); color:#231600; }
+  .answer-btn.close span.sub{ color:#231600; opacity:0.6; }
+  .answer-btn.excellent{ background:var(--excellent); }
+
+  /* SCREEN 4 — Start */
+  .start-screen{ padding:0; }
+  .hero-art{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px 0 0;
+  }
+  .start-copy{
+    text-align:center;
+    padding:0 24px;
+    margin-top:-10px;
+  }
+  .start-copy h1{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:-0.02em;
+  }
+  .start-copy p{
+    color:var(--text-muted);
+    font-size:12.5px;
+    margin-top:6px;
+  }
+  .start-btns{
+    padding:20px 18px 26px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  /* SCREEN 5 — Word bank */
+  .word-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    padding:11px 10px;
+    border-radius:10px;
+    font-size:13.5px;
+  }
+  .word-row:nth-child(even){ background:rgba(255,255,255,0.03); }
+  .word-row .w1{ font-weight:600; }
+  .word-row .w2{ color:var(--text-muted); }
+
+  /* SCREEN 6 — Complete */
+  .complete-wrap{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:26px;
+    padding-bottom:20px;
+  }
+  .complete-badge{
+    width:64px; height:64px;
+    border-radius:20px;
+    background:var(--blue-dim);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .complete-badge svg{ width:30px; height:30px; stroke:var(--blue); fill:none; stroke-width:2; }
+  .complete-title{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:21px;
+  }
+  .stat-row{ display:flex; gap:10px; width:100%; padding:0 18px; }
+  .stat-tile{
+    flex:1;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:12px 8px;
+    text-align:center;
+  }
+  .stat-tile .num{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:20px;
+  }
+  .stat-tile .lbl{
+    font-size:10.5px;
+    color:var(--text-muted);
+    margin-top:2px;
+    font-weight:600;
+  }
+  .stat-tile.poor .num{ color:var(--poor); }
+  .stat-tile.close .num{ color:var(--close); }
+  .stat-tile.mastered .num{ color:var(--excellent); }
+  .complete-btns{
+    width:100%;
+    padding:0 18px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  /* SCREEN 7 — Login */
+  .login-screen{ padding:0 18px; flex:1; display:flex; flex-direction:column; }
+  .login-logo{
+    width:56px; height:56px;
+    border-radius:16px;
+    background:linear-gradient(135deg, var(--blue), #1E3E8F);
+    display:flex; align-items:center; justify-content:center;
+    margin:8px auto 18px;
+  }
+  .login-logo span{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:20px;
+    color:#fff;
+  }
+  .login-heading{ text-align:center; margin-bottom:26px; }
+  .login-heading h1{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:-0.02em;
+  }
+  .login-heading p{
+    color:var(--text-muted);
+    font-size:12.5px;
+    margin-top:6px;
+  }
+  .field-group{ margin-bottom:14px; }
+  .field-label{
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--text-muted);
+    margin-bottom:6px;
+    display:block;
+  }
+  .field-input{
+    height:46px;
+    border-radius:13px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    padding:0 14px;
+    font-size:13.5px;
+    color:var(--text-faint);
+  }
+  .field-input.filled{ color:var(--text); }
+  .forgot-row{
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:20px;
+  }
+  .forgot-link{
+    font-size:11.5px;
+    font-weight:700;
+    color:var(--blue);
+  }
+  .signup-row{
+    text-align:center;
+    padding:18px 0 24px;
+    font-size:12.5px;
+    color:var(--text-muted);
+    margin-top:auto;
+  }
+  .signup-row a{
+    color:var(--blue);
+    font-weight:700;
+  }
+
+  /* SCREEN 8 — Profile */
+  .profile-screen{ padding:0 18px; flex:1; display:flex; flex-direction:column; }
+  .profile-head{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:14px 0 28px;
+  }
+  .profile-icon{
+    width:88px;
+    height:88px;
+    color:var(--blue);
+    margin-bottom:14px;
+  }
+  .profile-email{
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--text-muted);
+  }
+  .profile-stats{ display:flex; gap:10px; }
+  .profile-stat{
+    flex:1;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:16px 14px 14px;
+  }
+  .profile-stat .num{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:30px;
+    line-height:1;
+    color:var(--excellent);
+  }
+  .profile-stat .num .of{
+    font-size:14px;
+    font-weight:700;
+    color:var(--text-faint);
+    margin-left:2px;
+  }
+  .profile-stat .lbl{
+    font-size:12px;
+    font-weight:600;
+    color:var(--text-muted);
+    margin:8px 0 14px;
+  }
+  .profile-stat .progress-fill{ background:var(--excellent); }
+  .profile-actions{
+    margin-top:auto;
+    padding:14px 0 26px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .btn-danger{
+    background:transparent;
+    color:var(--poor);
+    border:1.5px solid rgba(255,92,97,0.35);
+  }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>Vocabulary Study App — Screen Mockups</h1>
+  <p>Eight core screens: Sets, Cards, Study, Start, Word Bank, Study Complete, Sign In, and Profile. Dark theme, blue accent, minimal layout, English UI.</p>
+</div>
+
+<div class="gallery">
+
+  <!-- SCREEN 1: SETS -->
+  <div class="frame-wrap">
+    <div class="frame-label">1 · Sets</div>
+    <div class="phone"><div class="screen">
+      <div class="notch"></div>
+      <div class="topbar">
+        <div class="icon-btn"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></div>
+        <div class="topbar-title">Sets</div>
+        <div class="avatar">JK</div>
+      </div>
+      <div class="content">
+        <h2 class="screen-title">Your Sets</h2>
+        <div class="tabs">
+          <div class="tab active">All</div>
+          <div class="tab">Mastered</div>
+          <div class="tab">Not Mastered</div>
+        </div>
+        <div class="scroll-y">
+          <div class="set-card">
+            <div class="set-top"><div class="set-title">Spanish Basics</div><div class="set-progress-pill">12/24 mastered</div></div>
+            <div class="set-desc">Everyday greetings, numbers, and common phrases for beginners.</div>
+            <div class="set-btns"><div class="btn-sm primary">Study All</div><div class="btn-sm secondary">Study Non-Mastered</div></div>
+          </div>
+          <div class="set-card">
+            <div class="set-top"><div class="set-title">Travel Phrases</div><div class="set-progress-pill">8/18 mastered</div></div>
+            <div class="set-desc">Airport, hotel, and restaurant vocabulary for your next trip.</div>
+            <div class="set-btns"><div class="btn-sm primary">Study All</div><div class="btn-sm secondary">Study Non-Mastered</div></div>
+          </div>
+          <div class="set-card">
+            <div class="set-top"><div class="set-title">Business English</div><div class="set-progress-pill">20/20 mastered</div></div>
+            <div class="set-desc">Meetings, emails, and negotiation terms for the workplace.</div>
+            <div class="set-btns"><div class="btn-sm primary">Study All</div><div class="btn-sm secondary">Study Non-Mastered</div></div>
+          </div>
+          <div class="set-card">
+            <div class="set-top"><div class="set-title">Food &amp; Dining</div><div class="set-progress-pill">3/16 mastered</div></div>
+            <div class="set-desc">Menus, ingredients, and ordering at restaurants with ease.</div>
+            <div class="set-btns"><div class="btn-sm primary">Study All</div><div class="btn-sm secondary">Study Non-Mastered</div></div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- SCREEN 2: CARDS -->
+  <div class="frame-wrap">
+    <div class="frame-label">2 · Cards</div>
+    <div class="phone"><div class="screen">
+      <div class="notch"></div>
+      <div class="topbar">
+        <div class="icon-btn"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></div>
+        <div class="topbar-title">Spanish Basics</div>
+        <div class="avatar">JK</div>
+      </div>
+      <div class="content">
+        <h2 class="screen-title">Cards</h2>
+        <div class="tabs">
+          <div class="tab active">All</div>
+          <div class="tab">Unmemorized</div>
+          <div class="tab">Memorized</div>
+        </div>
+        <div class="scroll-y">
+          <div class="card-grid">
+            <div class="flashcard"><div class="front">Hello</div><div class="divider"></div><div class="back">Hola</div></div>
+            <div class="flashcard memorized"><div class="front">Thank you<span class="dot" style="float:right"></span></div><div class="divider"></div><div class="back">Gracias</div></div>
+            <div class="flashcard"><div class="front">Goodbye</div><div class="divider"></div><div class="back">Adiós</div></div>
+            <div class="flashcard memorized"><div class="front">Please</div><div class="divider"></div><div class="back">Por favor</div></div>
+            <div class="flashcard"><div class="front">Water</div><div class="divider"></div><div class="back">Agua</div></div>
+            <div class="flashcard"><div class="front">Friend</div><div class="divider"></div><div class="back">Amigo</div></div>
+          </div>
+        </div>
+        <div class="bottom-fixed"><div class="btn btn-blue">Start Studying</div></div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- SCREEN 3: STUDY -->
+  <div class="frame-wrap">
+    <div class="frame-label">3 · Study</div>
+    <div class="phone"><div class="screen">
+      <div class="notch"></div>
+      <div class="topbar">
+        <div class="icon-btn"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+        <div class="topbar-title">Studying</div>
+        <div style="width:36px"></div>
+      </div>
+      <div class="content">
+        <div class="progress-row">
+          <div class="progress-track"><div class="progress-fill"></div></div>
+          <div class="progress-count">4/10</div>
+        </div>
+        <div class="study-card">
+          <div class="word">Hola</div>
+          <div class="hint">Tap card to flip</div>
+        </div>
+        <div class="answer-row">
+          <div class="answer-btn poor">Poor<span class="sub">Didn't know it</span></div>
+          <div class="answer-btn close">Close<span class="sub">Almost had it</span></div>
+          <div class="answer-btn excellent">Excellent<span class="sub">Knew it well</span></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- SCREEN 4: START -->
+  <div class="frame-wrap">
+    <div class="frame-label">4 · Start</div>
+    <div class="phone"><div class="screen">
+      <div class="notch"></div>
+      <div class="topbar">
+        <div class="icon-btn"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></div>
+        <div class="topbar-title">&nbsp;</div>
+        <div class="avatar">JK</div>
+      </div>
+      <div class="content start-screen">
+        <div class="hero-art">
+          <svg width="230" height="230" viewBox="0 0 230 230" fill="none">
+            <rect x="40" y="70" width="110" height="80" rx="14" transform="rotate(-8 40 70)" fill="#1A2338" stroke="#3D7BFF" stroke-width="2"/>
+            <rect x="70" y="55" width="110" height="80" rx="14" transform="rotate(6 70 55)" fill="#131A2B" stroke="#232D45" stroke-width="2"/>
+            <rect x="58" y="60" width="110" height="80" rx="14" fill="#0A0F1C" stroke="#3D7BFF" stroke-width="2.5"/>
+            <text x="113" y="108" font-family="Manrope" font-weight="800" font-size="26" fill="#EDF1FB" text-anchor="middle">Aa</text>
+            <circle cx="185" cy="150" r="26" fill="#3D7BFF"/>
+            <path d="M175 150l7 7 14-14" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="48" cy="168" r="16" fill="#1A2338" stroke="#232D45" stroke-width="2"/>
+            <text x="48" y="174" font-family="Manrope" font-weight="700" font-size="14" fill="#8A93AD" text-anchor="middle">語</text>
+            <path d="M100 175 Q113 190 126 175" stroke="#3D7BFF" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="1 8"/>
+          </svg>
+        </div>
+        <div class="start-copy">
+          <h1>Learn a little,<br>every day</h1>
+          <p>Pick up where you left off or explore your full word bank.</p>
+        </div>
+        <div class="start-btns">
+          <div class="btn btn-blue">Choose a Set</div>
+          <div class="btn btn-outline">View Word Bank</div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- SCREEN 5: WORD BANK -->
+  <div class="frame-wrap">
+    <div class="frame-label">5 · Word Bank</div>
+    <div class="phone"><div class="screen">
+      <div class="notch"></div>
+      <div class="topbar">
+        <div class="icon-btn"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></div>
+        <div class="topbar-title">Word Bank</div>
+        <div class="avatar">JK</div>
+      </div>
+      <div class="content">
+        <h2 class="screen-title">Word Bank</h2>
+        <div class="scroll-y">
+          <div class="word-row"><div class="w1">Hello</div><div class="w2">Hola</div></div>
+          <div class="word-row"><div class="w1">Goodbye</div><div class="w2">Adiós</div></div>
+          <div class="word-row"><div class="w1">Thank you</div><div class="w2">Gracias</div></div>
+          <div class="word-row"><div class="w1">Please</div><div class="w2">Por favor</div></div>
+          <div class="word-row"><div class="w1">Water</div><div class="w2">Agua</div></div>
+          <div class="word-row"><div class="w1">Friend</div><div class="w2">Amigo</div></div>
+          <div class="word-row"><div class="w1">Morning</div><div class="w2">Mañana</div></div>
+          <div class="word-row"><div class="w1">Night</div><div class="w2">Noche</div></div>
+          <div class="word-row"><div class="w1">Airport</div><div class="w2">Aeropuerto</div></div>
+          <div class="word-row"><div class="w1">Hotel</div><div class="w2">Hotel</div></div>
+          <div class="word-row"><div class="w1">Restaurant</div><div class="w2">Restaurante</div></div>
+          <div class="word-row"><div class="w1">Family</div><div class="w2">Familia</div></div>
+        </div>
+        <div class="bottom-fixed"><div class="btn btn-blue">Study All Words</div></div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- SCREEN 6: COMPLETE -->
+  <div class="frame-wrap">
+    <div class="frame-label">6 · Study Complete</div>
+    <div class="phone"><div class="screen">
+      <div class="notch"></div>
+      <div class="topbar">
+        <div class="icon-btn"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></div>
+        <div class="topbar-title">&nbsp;</div>
+        <div class="avatar">JK</div>
+      </div>
+      <div class="content">
+        <div class="complete-wrap">
+          <div class="complete-badge"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div class="complete-title">Study complete!</div>
+          <div class="stat-row">
+            <div class="stat-tile poor"><div class="num">4</div><div class="lbl">Poor</div></div>
+            <div class="stat-tile close"><div class="num">1</div><div class="lbl">Close</div></div>
+            <div class="stat-tile mastered"><div class="num">15</div><div class="lbl">Mastered</div></div>
+          </div>
+          <div class="complete-btns">
+            <div class="btn btn-blue">Study Again (All Cards)</div>
+            <div class="btn btn-outline">Study Again (Unmastered Only)</div>
+            <div class="btn btn-ghost">Back to Sets</div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- SCREEN 7: LOGIN -->
+  <div class="frame-wrap">
+    <div class="frame-label">7 · Sign In</div>
+    <div class="phone"><div class="screen">
+      <div class="notch"></div>
+      <div class="topbar">
+        <div style="width:36px"></div>
+        <div class="topbar-title">&nbsp;</div>
+        <div style="width:36px"></div>
+      </div>
+      <div class="login-screen">
+        <div class="login-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+            <circle cx="11" cy="4" r="2"/>
+            <circle cx="18" cy="8" r="2"/>
+            <circle cx="20" cy="16" r="2"/>
+            <path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>
+          </svg>
+        </div>
+        <div class="login-heading">
+          <h1>Vorti</h1>
+          <p>Sign in to continue your learning streak.</p>
+        </div>
+
+        <div class="field-group">
+          <span class="field-label">Email</span>
+          <div class="field-input filled">jane.kim@email.com</div>
+        </div>
+        <div class="field-group">
+          <span class="field-label">Password</span>
+          <div class="field-input">••••••••</div>
+        </div>
+        <div class="forgot-row"><div class="forgot-link">Forgot password?</div></div>
+
+        <div class="btn btn-blue">Sign In</div>
+
+        <div class="signup-row">Don't have an account? <a>Sign Up</a></div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- SCREEN 8: PROFILE -->
+  <div class="frame-wrap">
+    <div class="frame-label">8 · Profile</div>
+    <div class="phone"><div class="screen">
+      <div class="notch"></div>
+      <div class="topbar">
+        <div class="icon-btn"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></div>
+        <div class="topbar-title">Profile</div>
+        <div style="width:36px"></div>
+      </div>
+      <div class="profile-screen">
+        <div class="profile-head">
+          <svg class="profile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="12" cy="10" r="3"/>
+            <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/>
+          </svg>
+          <div class="profile-email">jane.kim@email.com</div>
+        </div>
+
+        <div class="profile-stats">
+          <div class="profile-stat">
+            <div class="num">1<span class="of">/4</span></div>
+            <div class="lbl">Mastered sets</div>
+            <div class="progress-track"><div class="progress-fill" style="width:25%"></div></div>
+          </div>
+          <div class="profile-stat">
+            <div class="num">43<span class="of">/78</span></div>
+            <div class="lbl">Mastered cards</div>
+            <div class="progress-track"><div class="progress-fill" style="width:55%"></div></div>
+          </div>
+        </div>
+
+        <div class="profile-actions">
+          <div class="btn btn-outline">Change Password</div>
+          <div class="btn btn-danger">Log Out</div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+</div>
+</body>
+</html>
