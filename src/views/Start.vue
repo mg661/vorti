@@ -18,7 +18,7 @@ const router = useRouter()
                 <img
                     :src="heroImage"
                     alt="Hero"
-                    class="w-full max-h-full object-contain"
+                    class="w-full h-1/2 object-contain"
                 >
 
                 <div class="font-heading font-bold text-3xl">
