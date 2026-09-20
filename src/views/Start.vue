@@ -5,7 +5,6 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 </script>
 
-```vue
 <template>
     <div class="h-full flex flex-col overflow-hidden">
         <header class="shrink-0">

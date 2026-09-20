@@ -30,14 +30,11 @@ async function handleSignOut() {
             <Home class="w-6 h-6 text-text"/>
         </router-link>
 
-        <button
-            type="button"
-            :disabled="isSigningOut"
-            class="w-12 h-12 rounded-card bg-blue border border-border flex items-center justify-center disabled:opacity-60"
-            @click="handleSignOut"
-        >
+         <router-link
+        :to="{name: 'profile'}"
+        class="w-12 h-12 rounded-card  bg-blue border border-border flex items-center justify-center">
             <User class="w-6 h-6 text-text"/>
-        </button>
+        </router-link>
 
     </div>
 </template>
