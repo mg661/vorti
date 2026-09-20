@@ -10,7 +10,7 @@ const router = useRouter()
 
 const store = useStudySessionStore()
 onMounted(() => {
-    store.loadDeck(route.params.setId, route.query.filter)
+  store.loadDeck(route.params.setId, route.query.filter)
 })
 
 async function handleAnswer(rating) {

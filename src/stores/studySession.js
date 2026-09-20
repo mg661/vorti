@@ -2,6 +2,16 @@
 import { defineStore } from 'pinia'
 import { supabase } from '@/utils/supabase'
 
+// Fisher-Yates – zwraca nową tablicę, nie mutuje oryginału
+function shuffleArray(array) {
+  const arr = [...array]
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
+
 export const useStudySessionStore = defineStore('studySession', {
   state: () => ({
     cards: [],
@@ -24,27 +34,29 @@ export const useStudySessionStore = defineStore('studySession', {
 
   actions: {
     async loadDeck(deckId, filter) {
-  this.status = 'loading'
-  try {
-    this.currentSetId = Number(deckId)
-    this.currentFilter = filter ?? null
+      this.status = 'loading'
+      try {
+        this.currentSetId = Number(deckId)
+        this.currentFilter = filter ?? null
 
-    const { data, error } = await supabase.rpc('get_cards_for_set', {
-      p_set_id: Number(deckId),
-    })
-    if (error) throw error
+        const { data, error } = await supabase.rpc('get_cards_for_set', {
+          p_set_id: Number(deckId),
+        })
+        if (error) throw error
 
-    this.cards = filter === 'unmemorized'
-      ? data.filter(c => !c.mastered)
-      : data
-    this.currentIndex = 0
-    this.results = []
-    this.status = 'ready'
-  } catch (e) {
-    console.error(e)
-    this.status = 'error'
-  }
-},
+        const filtered = filter === 'unmemorized'
+          ? data.filter(c => !c.mastered)
+          : data
+
+        this.cards = shuffleArray(filtered)
+        this.currentIndex = 0
+        this.results = []
+        this.status = 'ready'
+      } catch (e) {
+        console.error(e)
+        this.status = 'error'
+      }
+    },
 
      answer(rating) {
       const card = this.currentCard

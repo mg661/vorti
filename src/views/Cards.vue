@@ -10,7 +10,7 @@ const router = useRouter()
 const route = useRoute()
 const cardsStore = useCardsStore()
 const setsStore = useSetsStore()
-
+const shuffle = ref(true)
 onMounted(() => {
   cardsStore.loadCardsForSet(route.params.setId)
   // jeśli setsStore.sets jest jeszcze pusty (np. wejście bezpośrednio pod URL Cards.vue)
